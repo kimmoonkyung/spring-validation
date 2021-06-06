@@ -2,9 +2,9 @@ package com.example.validation.dto;
 
 import com.example.validation.annotation.YearMonth;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class User {
 
@@ -22,6 +22,9 @@ public class User {
 
     @YearMonth
     private String reqYearMonth; // yyyyMM
+
+    @Valid
+    private List<Car> cars;
 
     public String getName() {
         return name;
@@ -63,6 +66,14 @@ public class User {
         this.reqYearMonth = reqYearMonth;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -71,6 +82,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", reqYearMonth='" + reqYearMonth + '\'' +
+                ", cars=" + cars +
                 '}';
     }
 }
