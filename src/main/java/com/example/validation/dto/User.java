@@ -1,18 +1,19 @@
 package com.example.validation.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 public class User {
 
+    @NotBlank
     private String name;
 
+    @Max(value = 100)
     private int age;
 
-    @Email
+    @Email(message = "이메일 양식이 올바르지 않습니다.")
     private String email;
 
-    @Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}$")
+    @Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}$", message = "핸드폰 번호의 양식과 맞지 않습니다. 01x-xxx(x)-xxxx")
     private String phoneNumber;
 
     public String getName() {
